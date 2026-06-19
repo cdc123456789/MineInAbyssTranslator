@@ -357,9 +357,9 @@
   "item.mia.turtle_scute.titanjaw_scale": "泰坦颚鳞片",
   "item.mia.turtle_scute.might_be_useful_to_craft_gear": "如果收集足够，可能",
   "item.mia.turtle_scute.with_if_i_collect_enough.": "用于制作装备。",
-  "item.mia.leather.makihige_tentacle": "卷须章触手",
+  "item.mia.leather.makihige_tentacle": "寄居章鱼触手",
   "item.mia.leather.seems_useful._i_better_keep_this...": "看起来有用，我最好留着这个……",
-  "item.mia.ink_sac.makihige_ink_sac": "卷须章墨囊",
+  "item.mia.ink_sac.makihige_ink_sac": "寄居章鱼墨囊",
   "item.mia.ink_sac.with_this_you_might_be_able_to": "有了这个，你可能能够",
   "item.mia.ink_sac.do_something._probably_not_though": "做点什么，不过大概不行",
   "item.mia.ink_sac.kazura_squid_ink_sac": "和拉魷墨囊",
@@ -445,7 +445,7 @@
   "text.mia.uibuta": "域倚河馬",
   "text.mia.hashofu": "黑羽蝠",
   "text.mia.kazura": "和拉魷",
-  "text.mia.makihige": "卷须章",
+  "text.mia.makihige": "寄居章鱼",
   "text.mia.ashimite": "肢目鹿",
   "text.mia.baby_ashimite": "幼年肢目鹿",
   "text.mia.abyssal_snail": "深渊蜗牛",
@@ -507,6 +507,8 @@
   "item.mia.clock.7th_layer,_the_final_maelstrom": "奈落之底",
   "item.mia.clock.raw_hammerbeak_wing": "生槌嘴鸟翼",
   "item.mia.clock.this_meat_seems_delicious": "这块肉好像很美味",
-  "item.mia.clock.if_cooked_properly!":"如果烹饪正确!",
-  "text.mia.created_a_claim._only_the_people_listed_on_the_sign_can_access_it.":"你创建了个被保护的箱子，只有牌子上面列出的人才能访问."
+  "item.mia.clock.if_cooked_properly!": "如果烹饪正确!",
+  "text.mia.created_a_claim._only_the_people_listed_on_the_sign_can_access_it.": "你创建了个被保护的箱子，只有牌子上面列出的人才能访问.",
+  "item.mia.obsidian.makihige_shell": "寄居章鱼壳",
+  "item.mia.obsidian.i_hope_i_can_make_armor_from_this": "希望我能够用它做个盔甲"
 }

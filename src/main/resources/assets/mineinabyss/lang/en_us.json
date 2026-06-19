@@ -226,6 +226,7 @@
   "item.mia.clock.raw_hammerbeak_wing": "Raw Hammerbeak Wing",
   "item.mia.clock.this_meat_seems_delicious": "This meat seems delicious",
   "item.mia.clock.found_during_christmas_2025": "Found during Christmas 2025",
+  "item.mia.obsidian.makihige_shell": "Makihige Shell",
   "item.mia.leather.daikonchu_carapace": "Daikonchu Carapace",
   "item.mia.pointed_dripstone.buroguro_stinger": "Buroguro Stinger",
   "item.mia.amethyst_shard.crystal_hisoishi_claw": "Crystal Hisoishi Claw",
@@ -507,6 +508,7 @@
   "text.mia.raw_cyatoria_drumstick": "Raw Cyatoria Drumstick",
   "text.mia.cooked_cut_meat": "Cooked Cut Meat",
   "item.mia.clock.7th_layer,_the_final_maelstrom": "7th Layer, The Final Maelstrom",
-  "item.mia.clock.if_cooked_properly!":"if cooked properly!",
-  "text.mia.created_a_claim._only_the_people_listed_on_the_sign_can_access_it.":"Created a claim. Only the people listed on the sign can access it."
+  "item.mia.clock.if_cooked_properly!": "if cooked properly!",
+  "text.mia.created_a_claim._only_the_people_listed_on_the_sign_can_access_it.": "Created a claim. Only the people listed on the sign can access it.",
+  "item.mia.obsidian.i_hope_i_can_make_armor_from_this": "I hope I can make armor from this"
 }
