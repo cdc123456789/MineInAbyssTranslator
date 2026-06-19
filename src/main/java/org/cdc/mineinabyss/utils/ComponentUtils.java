@@ -45,13 +45,20 @@ public class ComponentUtils {
   public static MutableComponent visitSingleComponent(Component component
       , Function<String, String> keyFunction, Consumer<String> translated,
       Consumer<Component> postModifier, boolean checkWholeEnglish) {
-    if (component == null) {
-      return null;
-    }
     if (AbyssEventDetector.isDynamicText(component)) {
       var d = AbyssEventDetector.getDynamicText(component);
       LOG.info("Dynamic type: {}", d.name());
       return d.getMutableComponent(component);
+    }
+    return visitSingleComponentOrigin(component, keyFunction, translated, postModifier,
+        checkWholeEnglish);
+  }
+
+  public static MutableComponent visitSingleComponentOrigin(Component component
+      , Function<String, String> keyFunction, Consumer<String> translated,
+      Consumer<Component> postModifier, boolean checkWholeEnglish) {
+    if (component == null) {
+      return null;
     }
     MutableComponent comp;
     if (component.getContents() instanceof LiteralContents(String text)) {
@@ -70,7 +77,7 @@ public class ComponentUtils {
           }
         } else if (L10N.contains(generalKey)) {
           comp = Component.literal(L10N.getLanguage().getOrDefault(generalKey))
-              .setStyle(component.getStyle());
+              .setStyle(component.getStyle().withFont(FontDescription.DEFAULT));
           if (translated != null) {
             translated.accept(generalKey);
           }
@@ -132,7 +139,7 @@ public class ComponentUtils {
             }
           } else if (L10N.contains(generalKey)) {
             mutableComponent = Component.literal(L10N.getLanguage().getOrDefault(generalKey))
-                .setStyle(sibling.getStyle());
+                .setStyle(sibling.getStyle().withFont(FontDescription.DEFAULT));
             if (translated != null) {
               translated.accept(generalKey);
             }

@@ -69,8 +69,9 @@ public abstract class AbyssEventDetector {
 
   public static Function<Component, MutableComponent> tryToTranslateChat() {
     return a -> {
-      var com = ComponentUtils.visitSingleComponent(a, b -> StringUtils.generateKey(b, false), null,
-          null);
+      var com = ComponentUtils.visitSingleComponentOrigin(a, b -> StringUtils.generateKey(b, false),
+          null,
+          null, true);
       return com;
     };
   }
