@@ -511,5 +511,10 @@
   "item.mia.clock.if_cooked_properly!": "if cooked properly!",
   "text.mia.created_a_claim._only_the_people_listed_on_the_sign_can_access_it.": "Created a claim. Only the people listed on the sign can access it.",
   "item.mia.obsidian.i_hope_i_can_make_armor_from_this": "I hope I can make armor from this",
-"text.mia.you_do_not_have_permission_to_edit_this_sign.":" You do not have permission to edit this sign."
+"text.mia.you_do_not_have_permission_to_edit_this_sign.":" You do not have permission to edit this sign.",
+"item.mia.string.stinger_wing":"Stinger Wing",
+"item.mia.string.a_very_thin,_yet_surprisingly":"A very thin, yet surprisingly",
+"item.mia.string.flexible_piece_of_flesh":"flexible piece of flesh",
+"item.mia.string.kuongatari_silk":"Kuongatari Silk",
+"item.mia.string.tensile_strand_of_silk.":"tensile strand of silk."
 }
