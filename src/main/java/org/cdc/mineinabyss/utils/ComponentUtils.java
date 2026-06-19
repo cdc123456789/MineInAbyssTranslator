@@ -12,6 +12,7 @@ import net.minecraft.network.chat.contents.PlainTextContents.LiteralContents;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.cdc.mineinabyss.AbyssEventDetector;
 
 /**
  * &#064;Developer  user
@@ -46,6 +47,11 @@ public class ComponentUtils {
       Consumer<Component> postModifier, boolean checkWholeEnglish) {
     if (component == null) {
       return null;
+    }
+    if (AbyssEventDetector.isDynamicText(component)) {
+      var d = AbyssEventDetector.getDynamicText(component);
+      LOG.info("Dynamic type: {}", d.name());
+      return d.getMutableComponent(component);
     }
     MutableComponent comp;
     if (component.getContents() instanceof LiteralContents(String text)) {

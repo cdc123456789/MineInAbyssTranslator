@@ -20,7 +20,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.InteractionResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.cdc.mineinabyss.AbyssEventDetector;
 import org.cdc.mineinabyss.Mineinabyss;
 import org.cdc.mineinabyss.utils.ComponentUtils;
 import org.cdc.mineinabyss.utils.L10N;
@@ -95,11 +94,6 @@ public class MineinabyssClient implements ClientModInitializer {
       LOG.info("[GameMessage {}] {}", b ? "overlayer" : "", component);
       if (isNotConnectedToAbyss()) {
         return component;
-      }
-      if (AbyssEventDetector.isDynamicText(component)) {
-        var d = AbyssEventDetector.getDynamicText(component);
-        LOG.info("Dynamic type: {}", d.name());
-        return d.getMutableComponent(component);
       }
       AtomicBoolean translated = new AtomicBoolean(false);
       MutableComponent comp =

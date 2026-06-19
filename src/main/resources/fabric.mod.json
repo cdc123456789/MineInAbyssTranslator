@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "mineinabyss",
+  "id": "mineinabysstranslator",
   "version": "${version}",
-  "name": "MineInAbyss",
+  "name": "MineInAbyssTranslator",
   "description": "a translator for mine in abyss",
   "authors": [],
   "contact": {},
