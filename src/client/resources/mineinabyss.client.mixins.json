@@ -4,11 +4,18 @@
   "package": "org.cdc.mineinabyss.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "DeathScreenMixin",
+    "GUIMixin",
+    "MinecraftMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "overwrites": {
     "requireAnnotations": true
-  }
+  },
+  "mixins": [
+    "BossEventMixin",
+    "EntityMixin"
+  ]
 }

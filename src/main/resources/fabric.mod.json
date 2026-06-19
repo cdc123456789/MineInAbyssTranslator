@@ -3,7 +3,7 @@
   "id": "mineinabyss",
   "version": "${version}",
   "name": "MineInAbyss",
-  "description": "some tools",
+  "description": "a translator for mine in abyss",
   "authors": [],
   "contact": {},
   "license": "GPL-3.0",
