@@ -62,7 +62,7 @@ public class ComponentUtils {
     }
     MutableComponent comp;
     if (component.getContents() instanceof LiteralContents(String text)) {
-      if (StringUtils.isAllEnglish(text) || !checkWholeEnglish) {
+      if ((StringUtils.isAllEnglish(text) || !checkWholeEnglish) && text.length() != 1) {
         var key = keyFunction.apply(text);
         var generalKey = StringUtils.generateKey(text, false);
         if (component.getStyle().getClickEvent() instanceof SuggestCommand(String command)
@@ -113,18 +113,19 @@ public class ComponentUtils {
     if (postModifier != null) {
       postModifier.accept(comp);
     }
-    visitComponentSiblings(component, comp, keyFunction, translated, postModifier);
+    visitComponentSiblings(component, comp, keyFunction, translated, postModifier,
+        checkWholeEnglish);
     return comp;
   }
 
   private static void visitComponentSiblings(Component component, MutableComponent comp,
       Function<String, String> keyFunction, Consumer<String> translated,
-      Consumer<Component> postModifier) {
+      Consumer<Component> postModifier, boolean checkWholeEnglish) {
     for (Component sibling : component.getSiblings()) {
       LOG.debug(sibling.getClass().getName());
       MutableComponent mutableComponent;
       if (sibling.getContents() instanceof LiteralContents(String text)) {
-        if (StringUtils.isAllEnglish(text)) {
+        if ((StringUtils.isAllEnglish(text) || !checkWholeEnglish) && text.length() != 1) {
           var key = keyFunction.apply(text);
           var generalKey = StringUtils.generateKey(text, false);
           if (component.getStyle().getClickEvent() instanceof SuggestCommand(String command)
@@ -177,7 +178,8 @@ public class ComponentUtils {
       if (postModifier != null) {
         postModifier.accept(mutableComponent);
       }
-      visitComponentSiblings(sibling, mutableComponent, keyFunction, translated, postModifier);
+      visitComponentSiblings(sibling, mutableComponent, keyFunction, translated, postModifier,
+          checkWholeEnglish);
     }
   }
 }
