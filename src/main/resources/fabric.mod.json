@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "mineinabyss",
+  "version": "${version}",
+  "name": "MineInAbyss",
+  "description": "some tools",
+  "authors": [],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/mineinabyss/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "org.cdc.mineinabyss.client.MineinabyssClient"
+    ],
+    "main": [
+      "org.cdc.mineinabyss.Mineinabyss"
+    ]
+  },
+  "mixins": [
+    "mineinabyss.mixins.json",
+    {
+      "config": "mineinabyss.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
