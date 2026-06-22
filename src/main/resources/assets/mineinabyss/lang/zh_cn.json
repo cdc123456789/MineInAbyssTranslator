@@ -401,9 +401,9 @@
   "item.mia.paper.guild_members:": "公会成员:",
   "text.mia.stamina_and_climbing_system:_off!": "精力和攀爬系统: OFF!",
   "text.mia.stamina_and_climbing_system:_on!": "精力和攀爬系统: ON!",
-  "key.category.mineinabyss.convenience": "便捷控制",
-  "key.mineinabyss.killme": "自杀",
-  "key.mineinabyss.toggleclimb": "开启攀爬",
+  "key.category.mineinabysstranslator.convenience": "便捷控制",
+  "key.mineinabysstranslator.killme": "自杀",
+  "key.mineinabysstranslator.toggleclimb": "开启攀爬",
   "text.mia.baby_kuongatari": "幼年永伪虫",
   "text.mia.kuongatari": "永伪虫",
   "text.mia.onitsuchi": "鬼槌嘴鸟",
@@ -510,5 +510,14 @@
   "item.mia.clock.if_cooked_properly!": "如果烹饪正确!",
   "text.mia.created_a_claim._only_the_people_listed_on_the_sign_can_access_it.": "你创建了个被保护的箱子，只有牌子上面列出的人才能访问.",
   "item.mia.obsidian.makihige_shell": "寄居章鱼壳",
-  "item.mia.obsidian.i_hope_i_can_make_armor_from_this": "希望我能够用它做个盔甲"
+  "item.mia.obsidian.i_hope_i_can_make_armor_from_this": "希望我能够用它做个盔甲",
+  "text.mia.you_do_not_have_permission_to_edit_this_sign.": " 你尚未拥有权限编辑这个告示牌.",
+  "item.mia.string.stinger_wing": "蝎掌头翅膀",
+  "item.mia.string.a_very_thin,_yet_surprisingly": "一个非常瘦，但十分",
+  "item.mia.string.flexible_piece_of_flesh": "柔软的肉块",
+  "item.mia.string.kuongatari_silk": "永伪虫丝",
+  "item.mia.string.tensile_strand_of_silk.": "一缕丝线",
+  "item.mia.rabbit_hide.fuwagi_hide": "绒绒兔皮毛",
+  "item.mia.rabbit_hide.soft_and_cozy._you_can_make_some": "柔软舒适。你可以用它制作出",
+  "item.mia.rabbit_hide.quality_fabric_out_of_this.": "高品质的布料。"
 }

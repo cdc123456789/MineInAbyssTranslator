@@ -22,7 +22,8 @@ public abstract class AbyssEventDetector {
     FOUND_VEIN(startsWithFunction("You found a hidden vein!"), findVein()), WELCOME(
         containsFunction("Welcome"), null), JOIN_OR_LEAVE(
         a -> StringUtils.isJoinOrLeaveMessage(a.getString()), null), CHAT_MESSAGE(
-        StringUtils::isChatMessage, tryToTranslateChat());
+        StringUtils::isChatMessage, tryToTranslateChat()), PROTECTED(
+        startsWithFunction("You cannot use this block, it is protected by"), translateProtected());
 
     private final Function<Component, Boolean> matchFunction;
     private final Function<Component, MutableComponent> mutableComponentFunction;
@@ -73,6 +74,13 @@ public abstract class AbyssEventDetector {
           null,
           null, true);
       return com;
+    };
+  }
+
+  private static Function<Component, MutableComponent> translateProtected() {
+    return a -> {
+      var name = a.getString().replace("You cannot use this block, it is protected by ", "");
+      return Component.literal("你不能破坏被" + name + "设置保护的方块.");
     };
   }
 

@@ -6,6 +6,7 @@
   "client": [
     "DeathScreenMixin",
     "GUIMixin",
+    "MiaDeeperWorldLayerMixin",
     "MinecraftMixin"
   ],
   "injectors": {

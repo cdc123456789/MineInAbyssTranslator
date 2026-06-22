@@ -40,6 +40,7 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "curse.maven:auth-me-356643:7327836"
+    modCompileOnly fileTree("libs")
 }
 
 processResources {

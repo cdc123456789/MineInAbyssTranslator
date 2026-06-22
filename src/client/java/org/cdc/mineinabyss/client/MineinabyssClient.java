@@ -12,6 +12,7 @@ import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent.ShowText;
@@ -35,7 +36,7 @@ public class MineinabyssClient implements ClientModInitializer {
 
   KeyMapping suicide = KeyBindingHelper.registerKeyBinding(
       new KeyMapping(
-          "key.mineinabyss.killme", // The translation key for the key mapping.
+          "key.mineinabysstranslator.killme", // The translation key for the key mapping.
           InputConstants.Type.KEYSYM,
           // The type of the keybinding; KEYSYM for keyboard, MOUSE for mouse.
           -1, // The GLFW keycode of the key.
@@ -43,7 +44,7 @@ public class MineinabyssClient implements ClientModInitializer {
       ));
   KeyMapping toggleClimb = KeyBindingHelper.registerKeyBinding(
       new KeyMapping(
-          "key.mineinabyss.toggleclimb", // The translation key for the key mapping.
+          "key.mineinabysstranslator.toggleclimb", // The translation key for the key mapping.
           InputConstants.Type.KEYSYM,
           // The type of the keybinding; KEYSYM for keyboard, MOUSE for mouse.
           -1, // The GLFW keycode of the key.
@@ -114,24 +115,32 @@ public class MineinabyssClient implements ClientModInitializer {
       if (Minecraft.getInstance().hasShiftDown() || isNotConnectedToAbyss()) {
         return;
       }
-      var itemPath = BuiltInRegistries.ITEM.getKey(itemStack.getItem()).getPath();
-      for (int index = 0; index < list.size(); index++) {
-        var component = list.get(index);
-        var plain = component.getString();
-        if (plain.startsWith("minecraft:")) {
-          continue;
+      if (itemStack.has(DataComponents.ITEM_MODEL)) {
+        var itemPath = BuiltInRegistries.ITEM.getKey(itemStack.getItem()).getPath();
+        var translated = new AtomicBoolean(false);
+        for (int index = 0; index < list.size(); index++) {
+          var component = list.get(index);
+          var plain = component.getString();
+          if (plain.startsWith("minecraft:")) {
+            continue;
+          }
+          MutableComponent comp;
+          if (L10N.getCaches().containsKey(component)) {
+            comp = L10N.getCaches().get(component);
+            translated.set(true);
+          } else {
+            comp = ComponentUtils.visitSingleComponent(component,
+                a -> StringUtils.generateItemKey(itemPath, a), a -> translated.set(true), null);
+            if (translated.get()) {
+              L10N.getCaches().put(component, comp);
+            }
+          }
+          list.set(index, comp);
         }
-        MutableComponent comp;
-        if (L10N.getCaches().containsKey(component)) {
-          comp = L10N.getCaches().get(component);
-        } else {
-          comp = ComponentUtils.visitSingleComponent(component,
-              a -> StringUtils.generateItemKey(itemPath, a), null, null);
-          L10N.getCaches().put(component, comp);
+        if (translated.get()) {
+          list.add(Component.translatable("item.mia.tip_me_shift"));
         }
-        list.set(index, comp);
       }
-      list.add(Component.translatable("item.mia.tip_me_shift"));
     }));
 
   }
