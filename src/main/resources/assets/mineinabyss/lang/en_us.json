@@ -526,7 +526,6 @@
   "item.mia.clock.ray-healing_plate": "Ray-healing Plate",
   "text.mia.pvp_is_always_enabled_below_this_point.": " PVP is always enabled below this point.",
   "item.mia.copper_ingot.yomotsubi_wing": "Yomotsubi Wing",
-  "text.mia.dum_tick": "dum tick",
   "item.mia.gray_shulker_box.man-toyer_fur": "Man-toyer Fur",
   "item.mia.clock.holders_of_this_relic_report_that_it_feels_warm": "Holders of this Relic report that it feels warm",
   "item.mia.clock.and_comfortable_to_the_touch,_even_in_cold_climates.": "and comfortable to the touch, even in cold climates.",
@@ -537,7 +536,12 @@
   "item.mia.clock.eating_it_raw_might_not": "Eating it raw might not",
   "item.mia.clock.be_the_brighest_idea": "be the brighest idea",
   "item.mia.clock.i've_come_up_with...": "I've come up with...",
-  "text.mia.du_dum_tick": "du dum tick",
-  "text.mia.(50-100_blocks)": " (50-100 blocks)",
-  "text.mia.you_already_own_this_ticket!": " You already own this ticket!"
+  "text.mia.you_already_own_this_ticket!": " You already own this ticket!",
+  "item.mia.clock.distance_in_blocks_(250_150_100_50_25)_to_a_praying_skeleton.": "distance in blocks (250 150 100 50 25) to a Praying Skeleton.",
+  "item.mia.clock.distance_in_blocks_(200_150_100_50_25)_to_a_praying_skeleton.": "distance in blocks (200 150 100 50 25) to a Praying Skeleton.",
+  "item.mia.copper_ingot.a_sturdy,_metallic_wing.": "A sturdy, metallic wing.",
+  "item.mia.copper_ingot.perhaps_i_can_mold_this_into_something...": "Perhaps i can mold this into something...",
+  "item.mia.echo_shard.edusan_whisker": "Edusan Whisker",
+  "item.mia.echo_shard.when_i_touch_this_i_start": "When I touch this I start",
+  "item.mia.echo_shard.hearing_voices...": "hearing voices..."
 }

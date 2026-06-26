@@ -80,4 +80,15 @@ public class StringUtils {
     }
     return false;
   }
+
+  public static int parsePingLength(String message) {
+    return switch (message) {
+      case String s when s.startsWith("du du du du dum") -> 5;
+      case String s when s.startsWith("du du du dum") -> 4;
+      case String s when s.startsWith("du du dum") -> 3;
+      case String s when s.startsWith("du dum") -> 2;
+      case String s when s.startsWith("dum") -> 1;
+      default -> 0;
+    };
+  }
 }

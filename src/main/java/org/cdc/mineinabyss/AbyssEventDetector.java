@@ -37,7 +37,9 @@ public abstract class AbyssEventDetector {
     }, null), PRIVATE_MESSAGE2(
         a -> a.getContents() instanceof TranslatableContents translatableContents && Stream.of(
                 "commands.message.display.outgoing", "commands.message.display.incoming")
-            .anyMatch(c -> translatableContents.getKey().equals(c)), null);
+            .anyMatch(c -> translatableContents.getKey().equals(c)), null), DUM_TICK(
+        a -> StringUtils.parsePingLength(a.getString()) != 0, null
+    );
 
     private final Function<Component, Boolean> matchFunction;
     private final Function<Component, MutableComponent> mutableComponentFunction;
