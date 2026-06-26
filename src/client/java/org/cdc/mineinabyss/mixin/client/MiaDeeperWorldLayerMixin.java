@@ -24,26 +24,26 @@ public class MiaDeeperWorldLayerMixin {
   @Final
   public String title;
 
-  @Inject(method = "<init>(Ljava/lang/String;ILjava/lang/String;ILjava/lang/Integer;ILjava/util/List;)V", at = @At("TAIL"))
+  @Inject(method = "<init>(Ljava/lang/String;ILjava/lang/String;ILjava/lang/Integer;ILjava/lang/Integer;Ljava/util/List;)V", at = @At("TAIL"), remap = false)
   private void modifyTitle(String title, int centerX, String startY, int titleColor,
-      Integer ascensionEffects, int par6, List par7, CallbackInfo ci) {
+      Integer subtitleColor, int ascensionEffects, Integer par7, List par8, CallbackInfo ci) {
     switch (title) {
       case "Orth" -> {
         this.title = "奥斯";
       }
-      case "L1" -> {
+      case "L1", "Edge of the Abyss" -> {
         this.title = "阿比斯之渊边界";
       }
-      case "L2" -> {
+      case "L2", "Forest of Temptation" -> {
         this.title = "诱惑之森";
       }
-      case "L3" -> {
+      case "L3", "Great Fault" -> {
         this.title = "大断层";
       }
-      case "L4" -> {
+      case "L4", "The Goblets of Giants" -> {
         this.title = "巨人之杯";
       }
-      case "L5" -> {
+      case "L5", "Sea of Corpses" -> {
         this.title = "亡骸之海";
       }
     }

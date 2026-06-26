@@ -5,8 +5,8 @@
   "compatibilityLevel": "JAVA_21",
   "client": [
     "DeathScreenMixin",
+    "EntityRendererMixin",
     "GUIMixin",
-    "MiaDeeperWorldLayerMixin",
     "MinecraftMixin"
   ],
   "injectors": {
@@ -17,6 +17,7 @@
   },
   "mixins": [
     "BossEventMixin",
-    "EntityMixin"
+    "EntityMixin",
+    "MiaDeeperWorldLayerMixin"
   ]
 }

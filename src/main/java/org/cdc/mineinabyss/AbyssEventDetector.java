@@ -1,9 +1,12 @@
 package org.cdc.mineinabyss;
 
 import java.util.function.Function;
+import java.util.stream.Stream;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.HoverEvent.ShowText;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.cdc.mineinabyss.utils.ComponentUtils;
@@ -23,7 +26,18 @@ public abstract class AbyssEventDetector {
         containsFunction("Welcome"), null), JOIN_OR_LEAVE(
         a -> StringUtils.isJoinOrLeaveMessage(a.getString()), null), CHAT_MESSAGE(
         StringUtils::isChatMessage, tryToTranslateChat()), PROTECTED(
-        startsWithFunction("You cannot use this block, it is protected by"), translateProtected());
+        startsWithFunction("You cannot use this block, it is protected by"),
+        translateProtected()), WARPING_MESSAGE(startsWithFunction("Warping in "), a -> {
+      var second = a.getString().replace("Warping in ", "").replace("seconds...", "");
+      return Component.literal("即将启动，请做好准备，还剩" + second.trim() + "秒");
+    }), PRIVATE_MESSAGE1(a -> {
+      var plain = a.getString();
+      return plain.contains("You ->")
+          || plain.contains("-> You:") && a.getSiblings().getFirst().getStyle().getColor() != null;
+    }, null), PRIVATE_MESSAGE2(
+        a -> a.getContents() instanceof TranslatableContents translatableContents && Stream.of(
+                "commands.message.display.outgoing", "commands.message.display.incoming")
+            .anyMatch(c -> translatableContents.getKey().equals(c)), null);
 
     private final Function<Component, Boolean> matchFunction;
     private final Function<Component, MutableComponent> mutableComponentFunction;
@@ -36,7 +50,7 @@ public abstract class AbyssEventDetector {
 
     public MutableComponent getMutableComponent(Component component) {
       if (mutableComponentFunction == null) {
-        return (MutableComponent) component;
+        return Component.empty().append(component);
       }
       var result = mutableComponentFunction.apply(component);
       if (!result.equals(component)) {
@@ -73,6 +87,10 @@ public abstract class AbyssEventDetector {
       var com = ComponentUtils.visitSingleComponentOrigin(a, b -> StringUtils.generateKey(b, false),
           null,
           null, true);
+      com.append(
+          Component.literal(" [!]")
+              .withStyle(b -> b.withHoverEvent(new ShowText(a)).withColor(
+                  ChatFormatting.GOLD)));
       return com;
     };
   }

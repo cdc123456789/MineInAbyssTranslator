@@ -13,6 +13,7 @@ import net.minecraft.network.chat.contents.TranslatableContents;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.cdc.mineinabyss.AbyssEventDetector;
+import org.cdc.mineinabyss.Mineinabyss;
 
 /**
  * &#064;Developer  user
@@ -48,6 +49,7 @@ public class ComponentUtils {
     if (AbyssEventDetector.isDynamicText(component)) {
       var d = AbyssEventDetector.getDynamicText(component);
       LOG.info("Dynamic type: {}", d.name());
+      translated.accept(component.getString());
       return d.getMutableComponent(component);
     }
     return visitSingleComponentOrigin(component, keyFunction, translated, postModifier,
@@ -83,7 +85,7 @@ public class ComponentUtils {
           }
         } else {
           comp = component.plainCopy().setStyle(component.getStyle());
-          LOG.info("Missing key: \"{}\":\"{}\"", key, text);
+          Mineinabyss.LogUntranslatedKey(LOG, key, text);
         }
       } else {
         comp = Component.literal(text).setStyle(component.getStyle());
@@ -105,7 +107,8 @@ public class ComponentUtils {
           modified[index] = arg;
         }
       }
-      comp = Component.translatable(translatableContents.getKey(), modified);
+      comp = Component.translatable(translatableContents.getKey(), modified)
+          .setStyle(component.getStyle());
     } else {
       comp = component.plainCopy().setStyle(component.getStyle());
     }
@@ -146,7 +149,7 @@ public class ComponentUtils {
             }
           } else {
             mutableComponent = sibling.plainCopy().setStyle(sibling.getStyle());
-            LOG.info("Missing sibling key: \"{}\":\"{}\"", key, text);
+            Mineinabyss.LogUntranslatedKey(LOG, key, text);
           }
         } else {
           mutableComponent = sibling.plainCopy().withStyle(sibling.getStyle());
@@ -169,7 +172,8 @@ public class ComponentUtils {
             modified[index] = arg;
           }
         }
-        mutableComponent = Component.translatable(translatableContents.getKey(), modified);
+        mutableComponent = Component.translatable(translatableContents.getKey(), modified)
+            .setStyle(component.getStyle());
       } else {
         mutableComponent = sibling.plainCopy().withStyle(sibling.getStyle());
       }

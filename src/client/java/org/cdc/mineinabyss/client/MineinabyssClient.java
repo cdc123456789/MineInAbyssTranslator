@@ -81,18 +81,13 @@ public class MineinabyssClient implements ClientModInitializer {
         ((message, signedMessage, sender, params, receptionTimestamp) -> {
           if (Minecraft.getInstance().player != null) {
             Minecraft.getInstance().player.displayClientMessage(
-                Component.literal("!").withStyle(style -> {
-                  if (signedMessage != null) {
-                    return style.withHoverEvent(new ShowText(signedMessage.decoratedContent()));
-                  }
-                  return style;
-                }).append(message), false);
+                message, false);
           }
           return false;
         }));
 
     ClientReceiveMessageEvents.MODIFY_GAME.register((component, b) -> {
-      LOG.info("[GameMessage {}] {}", b ? "overlayer" : "", component);
+      LOG.info("[Original GameMessage{}] {}", b ? " overlayer" : "", component);
       if (isNotConnectedToAbyss()) {
         return component;
       }
@@ -106,7 +101,7 @@ public class MineinabyssClient implements ClientModInitializer {
             Component.literal(" [!]")
                 .withStyle(a -> a.withHoverEvent(new ShowText(component)).withColor(
                     ChatFormatting.GOLD)));
-        LOG.info("[Game message modified] {}", comp);
+        LOG.info("[Modified GameMessage] {}", comp);
       }
       return comp;
     });
@@ -146,9 +141,10 @@ public class MineinabyssClient implements ClientModInitializer {
   }
 
   public static boolean isNotConnectedToAbyss() {
-    return Minecraft.getInstance().getConnection() == null
-        || Minecraft.getInstance().getConnection().getServerData() == null
-        || !Minecraft.getInstance()
-        .getConnection().getServerData().ip.contains("mineinabyss.com");
+    var instance = Minecraft.getInstance();
+    return instance.getConnection() == null
+        || instance.getConnection().getServerData() == null
+        || !instance
+        .getConnection().getServerData().ip.contains("mineinabyss.com") || instance.noRender;
   }
 }
