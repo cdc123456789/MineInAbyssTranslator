@@ -27,7 +27,7 @@ public class MiaDeeperWorldLayerMixin {
   @Inject(method = "<init>(Ljava/lang/String;ILjava/lang/String;ILjava/lang/Integer;ILjava/lang/Integer;Ljava/util/List;)V", at = @At("TAIL"), remap = false)
   private void modifyTitle(String title, int centerX, String startY, int titleColor,
       Integer subtitleColor, int ascensionEffects, Integer par7, List par8, CallbackInfo ci) {
-    switch (title) {
+    switch (this.title) {
       case "Orth" -> {
         this.title = "奥斯";
       }

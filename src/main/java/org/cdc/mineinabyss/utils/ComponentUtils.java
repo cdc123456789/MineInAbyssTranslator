@@ -49,7 +49,9 @@ public class ComponentUtils {
     if (AbyssEventDetector.isDynamicText(component)) {
       var d = AbyssEventDetector.getDynamicText(component);
       LOG.info("Dynamic type: {}", d.name());
-      translated.accept(component.getString());
+      if (translated != null) {
+        translated.accept(component.getString());
+      }
       return d.getMutableComponent(component);
     }
     return visitSingleComponentOrigin(component, keyFunction, translated, postModifier,

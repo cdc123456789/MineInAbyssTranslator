@@ -39,7 +39,9 @@ public abstract class AbyssEventDetector {
                 "commands.message.display.outgoing", "commands.message.display.incoming")
             .anyMatch(c -> translatableContents.getKey().equals(c)), null), DUM_TICK(
         a -> StringUtils.parsePingLength(a.getString()) != 0, null
-    );
+    ), SOMEONE_OBTAIN_RELIC(startsWithFunction("You hear whispers that"),
+        a -> ComponentUtils.visitSingleComponentOrigin(a,
+            key -> StringUtils.generateKey(key, false), null, null, true));
 
     private final Function<Component, Boolean> matchFunction;
     private final Function<Component, MutableComponent> mutableComponentFunction;
